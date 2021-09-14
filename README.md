@@ -58,17 +58,23 @@
  -	Chia Dev Tools:
    - from powershell create and navigate to directory for projects, create and activate python vitrual env, install dev tools, add basic tests to project folder
 
-     C:\Users\demo\Desktop\TestProject>	mkdir TestProject
+     C:\Users\demo\Desktop>	mkdir TestProject
+     # (creates directory named "TestProject")
      
-     C:\Users\demo\Desktop\TestProject>	cd .\TestProject\
+     C:\Users\demo\Desktop>	cd .\TestProject\
+     # (navigates to newly created directory) 
      
      C:\Users\demo\Desktop\TestProject>	py -m venv venv
+     # (creates virtual environment, this also creates the "venv" directory needed for the project)
      
      C:\Users\demo\Desktop\TestProject>	.\venv\Scripts\activate
+     # (activates the virtual environment)
      
      C:\Users\demo\Desktop\TestProject>	pip install chia-dev-tools
+     # (installs the required chia development tools/commands)
      
      C:\Users\demo\Desktop\TestProject>  cdv test --init
+     # (creates basic clsp tests within project folder)
 
  **Verify Installation via CLI:** (must enter commands from python virtual environment in project folder)
      
