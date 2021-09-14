@@ -1,4 +1,4 @@
-**Rhynosphere Project How-To**
+                            **Rhynosphere Project How-To**
 
  --note this project and its creator have no connections with the Chia Network team.
 
