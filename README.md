@@ -35,14 +35,14 @@
 
 This project takes a clsp file and processes it into all necessary files/data for use on the blockchain. Items that do not have their own file types are stored in .txt files. All files will be created in the ChiaLisp files directory and will overwrite any identically named documents (NOTE- some data may have extraneous brackets that will need to be removed prior to deployment). Below are all current outputs:
 
-> Hex result
-> Hex file path
-> Curry result
-> Curry file path
-> TreeHash result
-> TreeHash file path
-> Wallet result
-> Wallet file path
+> - Hex result
+> - Hex file path
+> - Curry result
+> - Curry file path
+> - TreeHash result
+> - TreeHash file path
+> - Wallet result
+> - Wallet file path
 
 
  <h2>ChiaLisp Development Pre-requisites</h2>
