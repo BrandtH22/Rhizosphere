@@ -91,3 +91,7 @@
 
      C:\Users\demo\Desktop\TestProject>  cdv test --init
      #  (creates basic tests within project folder)
+
+
+Donations are always appreicated!:
+xch1sg7g930mh676jfl09r4d4622z6wlwyv3u0ezcsxmn8rva9wqx8mqtgc2sf
