@@ -21,27 +21,28 @@
 
  <h2>Inputs</h2>
 
- Powershell File: this file is included in the project and runs the clsp commands
+> Powershell File: this file is included in the project and runs the clsp commands
 
- Virtual Environment: Select the "venv" folder directory. If you do not have a virtual environment setup pleasse review the ChiaLisp development pre-requisites at the bottom of this document.
+> Virtual Environment: Select the "venv" folder directory. If you do not have a virtual environment setup pleasse review the ChiaLisp development pre-requisites at the bottom of this document.
 
- ChiaLisp File: Select the ChiaLisp file to be processed. This is a file that you would have ceated using the noted development steps within the pre-requisites overview at the bottom of this document.
+> ChiaLisp File: Select the ChiaLisp file to be processed. This is a file that you would have ceated using the noted development steps within the pre-requisites overview at the bottom of this document.
 
- Arguments to Curry (arg1 and arg2): This project currently supports two variables to be curried into the hex file. Leave the field as default or delete all contents within to process without arguments. (NOTE: arguments must be in the format '-a xxx' ex. '-a 500' could be an argument currying the value of 500. Invalid arguments will fail leading to only a hex creation.)
+> Arguments to Curry (arg1 and arg2): This project currently supports two variables to be curried into the hex file. Leave the field as default or delete all contents within to process without arguments. (NOTE: arguments must be in the format '-a xxx' ex. '-a 500' could be an argument currying the value of 500. Invalid arguments will fail leading to only a hex creation.)
 
- Wallet Prefix: This project supports both txch and xch prefixes. The sunken/grayed out item is the selected prefix (supporting command line will display toggle results for verification).
+> Wallet Prefix: This project supports both txch and xch prefixes. The sunken/grayed out item is the selected prefix (supporting command line will display toggle results for verification).
 
  <h2>Outputs</h2>
 
- This project takes a clsp file and processes it into all necessary files/data for use on the blockchain. Items that do not have their own file types are stored in .txt files. All files will be created in the ChiaLisp files directory and will overwrite any identically named documents (NOTE- some data may have extraneous brackets that will need to be removed prior to deployment). Below are all current outputs:
- Hex result
- Hex file path
- Curry result
- Curry file path
- TreeHash result
- TreeHash file path
- Wallet result
- Wallet file path
+This project takes a clsp file and processes it into all necessary files/data for use on the blockchain. Items that do not have their own file types are stored in .txt files. All files will be created in the ChiaLisp files directory and will overwrite any identically named documents (NOTE- some data may have extraneous brackets that will need to be removed prior to deployment). Below are all current outputs:
+
+> Hex result
+> Hex file path
+> Curry result
+> Curry file path
+> TreeHash result
+> TreeHash file path
+> Wallet result
+> Wallet file path
 
 
  <h2>ChiaLisp Development Pre-requisites</h2>
