@@ -1,4 +1,4 @@
-                            **Rhynosphere Project How-To**
+ ....................**Rhynosphere Project How-To**...................
 
  --note this project and its creator have no connections with the Chia Network team.
 
@@ -59,22 +59,29 @@
    - from powershell create and navigate to directory for projects, create and activate python vitrual env, install dev tools, add basic tests to project folder
 
      C:\Users\demo\Desktop\TestProject>	mkdir TestProject
+     
      C:\Users\demo\Desktop\TestProject>	cd .\TestProject\
+     
      C:\Users\demo\Desktop\TestProject>	py -m venv venv
+     
      C:\Users\demo\Desktop\TestProject>	.\venv\Scripts\activate
+     
      C:\Users\demo\Desktop\TestProject>	pip install chia-dev-tools
+     
      C:\Users\demo\Desktop\TestProject>  cdv test --init
 
  **Verify Installation via CLI:** (must enter commands from python virtual environment in project folder)
+     
      C:\Users\demo\Desktop\TestProject>  chia --help
-       (validates chia installation, identical to chia full node help)
+     #  (validates chia installation, identical to chia full node help)
+     
      C:\Users\demo\Desktop\TestProject>  brun --help
-       (validates clvm tools are installed)
+     #  (validates clvm tools are installed)
+     
      C:\Users\demo\Desktop\TestProject>  cdv --help
-       (validates development tools are installed)
+     #  (validates development tools are installed)
 
  **Setup Basic Tests within Project Folder** (must enter commands from python virtual environment in project folder)
 
      C:\Users\demo\Desktop\TestProject>  cdv test --init
-       (creates basic tests within project folder)
-     C:\Users\demo\Desktop\TestProject>  
+     #  (creates basic tests within project folder)
