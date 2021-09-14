@@ -4,15 +4,16 @@
 
 
 <h2>Getting Started</h2>
- - Download the Rhynosphere.vxx.py and create_hex.ps1 files.
- - Add these files to any locatable directory.
- - Run Rhynosphere.vxx.py
+
+> - Download the Rhynosphere.vxx.py and create_hex.ps1 files.
+> - Add these files to any locatable directory.
+> - Run Rhynosphere.vxx.py
 
 <h2>Using the GUI</h2>
- - Select the previously downloaded powershell file, the ChiaLisp file to be processed, appropriate prefix, and desired arguments.
- - Click the begin button
- - Wait for the results to appear
 
+> - Select the previously downloaded powershell file, the ChiaLisp file to be processed, appropriate prefix, and desired arguments.
+> - Click the begin button
+> - Wait for the results to appear
 
  (NOTE - processing will take less than 1 minute but during this time it may appear as though the GUI is frozen, it is not just please be patient. Future updates will include a processing identifier, for the time being monitor the supporting CLI for status. Also note that the created hex and txt files will overwrite any files with the same names.)
 
@@ -44,6 +45,7 @@
 
 
  <h2>ChiaLisp Development Pre-requisites</h2>
+ 
  Below is an overview of pre-requisites setup. Additional information can be found on the chialisp main website: https://chialisp.com/
 > -	Terminal
 > -	Editor
@@ -52,6 +54,7 @@
 
 
  <h2>Example Setup (windows)</h2>
+ 
 > -	PowerShell https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1
 > -	Nano https://atom.io/
 > -	Python https://www.python.org/downloads/
@@ -94,4 +97,5 @@
 
 
 Donations are always appreicated!:
+
 xch1sg7g930mh676jfl09r4d4622z6wlwyv3u0ezcsxmn8rva9wqx8mqtgc2sf
