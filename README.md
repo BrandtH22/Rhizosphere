@@ -3,12 +3,12 @@
  --note this project and its creator have no connections with the Chia Network team.
 
 
-**Getting Started**
+<h2>**Getting Started**</h2>
  - Download the Rhynosphere.vxx.py and create_hex.ps1 files.
  - Add these files to any locatable directory.
  - Run Rhynosphere.vxx.py
 
-**Using the GUI**
+<h2>**Using the GUI**</h2>
  - Select the previously downloaded powershell file, the ChiaLisp file to be processed, appropriate prefix, and desired arguments.
  - Click the begin button
  - Wait for the results to appear
@@ -18,7 +18,7 @@
 
 
 
- **Inputs**
+ <h2>**Inputs**</h2>
 
  Powershell File: this file is included in the project and runs the clsp commands
 
@@ -30,7 +30,7 @@
 
  Wallet Prefix: This project supports both txch and xch prefixes. The sunken/grayed out item is the selected prefix (supporting command line will display toggle results for verification).
 
- **Outputs**
+ <h2>**Outputs**</h2>
 
  This project takes a clsp file and processes it into all necessary files/data for use on the blockchain. Items that do not have their own file types are stored in .txt files. All files will be created in the ChiaLisp files directory and will overwrite any identically named documents (NOTE- some data may have extraneous brackets that will need to be removed prior to deployment). Below are all current outputs:
  Hex result
@@ -43,15 +43,15 @@
  Wallet file path
 
 
- **ChiaLisp Development Pre-requisites**
+ <h2>**ChiaLisp Development Pre-requisites**</h2>
  Below is an overview of pre-requisites setup. Additional information can be found on the chialisp main website: https://chialisp.com/
- -	Terminal
- -	Editor
- -	Python
- -	Chia Dev Tools (python wheel)
+> -	Terminal
+> -	Editor
+> -	Python
+> -	Chia Dev Tools (python wheel)
 
 
- **Example Setup (windows)**
+ <h2>**Example Setup (windows)**</h2>
 > -	PowerShell https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1
 > -	Nano https://atom.io/
 > -	Python https://www.python.org/downloads/
@@ -76,7 +76,7 @@
      C:\Users\demo\Desktop\TestProject>  cdv test --init
      # (creates basic clsp tests within project folder)
 
- **Verify Installation via CLI:** (must enter commands from python virtual environment in project folder)
+ <h2>**Verify Installation via CLI:** </h2>(must enter commands from python virtual environment in project folder)
      
      C:\Users\demo\Desktop\TestProject>  chia --help
      #  (validates chia installation, identical to chia full node help)
@@ -87,7 +87,7 @@
      C:\Users\demo\Desktop\TestProject>  cdv --help
      #  (validates development tools are installed)
 
- **Setup Basic Tests within Project Folder** (must enter commands from python virtual environment in project folder)
+ <h2>**Setup Basic Tests within Project Folder**</h2> (must enter commands from python virtual environment in project folder)
 
      C:\Users\demo\Desktop\TestProject>  cdv test --init
      #  (creates basic tests within project folder)
