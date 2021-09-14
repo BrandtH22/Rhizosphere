@@ -1,0 +1,78 @@
+bg_main_frame: defines background color and sizing
+bg_top_frame: defines background color and position of top user entry elements
+bg_topps_frame: defines bckground and position of powershell file output
+bg_topenv_frame: defines bckground and position of virtual environment output
+bg_topclsp_frame: defines bckground and position of chialisp file output
+bg_topr_frame: defines background color and position of top right user entry elements
+bg_mid_frame: defines background color and positioning for central elements (begin button)
+bg_bot_frame: defines background and positioning for bottom elements (results)
+bg_hexR_frame: defines background and positioning for hex result output
+bg_hexF_frame: defines background and positioning for hex file output
+bg_curryR_frame: defines background and positioning for curry result output
+bg_curryF_frame: defines background and positioning for curry file output
+bg_treeHashR_frame: defines background and positioning for treeHash result output
+bg_treeHashF_frame: defines background and positioning for treeHash file output
+bg_walletR_frame: defines background and positioning for wallet result output
+bg_walletF_frame: defines background and positioning for wallet file output
+
+header_text: controls header/logo text and positioning
+psFile_btn: button for powershell file entry
+psFile_text: text output of selected powershell file
+psFile_path: variable containing powershell file path
+envFile_btn: button for virtual environment entry
+envFile_text: text output of selected virtual environment
+envFile_path: variable containing virtual environment path
+clspFile_btn: button for chialisp file entry
+clspFile_text: text output of selected chialisp file
+clspFile_path: variable containing the chialisp file path
+hexResult_label: label for hex result output
+hexResult_text: text output for hex result
+hexResult_var: variable to store hex result
+hexFile_label: label for hex file output (hex is stored in a txt file)
+hexFile_text: text output for hex file
+hexFile_var: variable to store hex file
+curryResult_label: label for the curry result output
+curryResult_text: text output for curry result
+curryResult_var: variable to store curry result
+curryFile_label: label for the curry file output (curry is stored in a txt file)
+curryFile_text: text output for curry file
+curryFile_var: variable to store curry file
+treeHashResult_label: label for the tree hash result output
+treeHashResult_text: text output for treehash result
+treeHashResult_var: variable to store treehash result
+treeHashFile_label: label for the tree hash file output (tree hash is stored in a txt file)
+treeHashFile_text: text output for treehash file
+treeHashFile_var: variable to store treehash file
+walletResult_label: label for the encoded wallet result output
+walletResult_text: text output for encoded wallet result
+walletResult_var: variable to store encoded wallet result
+walletFile_label: label for the wallet file output (wallet is stored in a txt file)
+walletFile_text: text output for encoded wallet file
+walletFile_var: variable to store encoded wallet file
+args_label: label for identifying entry of Arguments
+arg1_label: label for first argument entry
+arg1_text: text input for argument 1
+arg1_var: variable to store argument 1
+arg2 label: label for second argument entry
+arg2_text: text input for argument 2
+arg2_var: variable to store argument 2
+prefix_label: label for prefix selection
+prefix_txch_btn: button for txch prefix selection
+prefix_xch_btn: button for xch prefix selection
+clicked1: variable used to remove entry information from arg1 entry field
+clicked2: variable used to remove entry information from arg2 entry field
+prefix_var: variable used to store prefix selection. Prefix defaults to txch
+
+PS variables
+$envPath: envFile_path imported from Python
+$filePath: clspFile_path imported from Python
+$fileName: stripped fileName from $filePath - used for clsp operations
+$inputa: arg1 imported from Python
+$inputb: arg2 imported from Python
+$prefix: prefix_var imported from Python
+$path: stripped directory from imported clspFile_path
+$HexPath: full file path for created hex file
+$curry: result from curry function
+$hex: result from hex function
+$treehash: result from treehash function
+$encode: result from encoding with noted prefix
