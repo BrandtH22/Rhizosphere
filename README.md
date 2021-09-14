@@ -1,4 +1,4 @@
- ....................**Rhynosphere Project How-To**...................
+ <h1>**Rhynosphere Project How-To**</h1>
 
  --note this project and its creator have no connections with the Chia Network team.
 
@@ -52,11 +52,11 @@
 
 
  **Example Setup (windows)**
- -	PowerShell https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1
- -	Nano https://atom.io/
- -	Python https://www.python.org/downloads/
- -	Chia Dev Tools:
-   - from powershell create and navigate to directory for projects, create and activate python vitrual env, install dev tools, add basic tests to project folder
+> -	PowerShell https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1
+> -	Nano https://atom.io/
+> -	Python https://www.python.org/downloads/
+> -	Chia Dev Tools:
+>   - from powershell create and navigate to directory for projects, create and activate python vitrual env, install dev tools, add basic tests to project folder
 
      C:\Users\demo\Desktop>	mkdir TestProject
      # (creates directory named "TestProject")
