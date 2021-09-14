@@ -292,7 +292,7 @@ def display_results():
         hexResult_var = reader1.readlines()
     hexResult_text.configure(state="normal")
     hexResult_text.delete(1.0, "end")
-    hexResult_text.insert(1.0, hexResult_var, 'justified')
+    hexResult_text.insert(1.0, *hexResult_var, 'justified')
 
     hexFile_text.configure(state="normal")
     hexFile_text.delete(1.0, "end")
@@ -302,7 +302,7 @@ def display_results():
         curryResult_var = reader2.readlines()
     curryResult_text.configure(state="normal")
     curryResult_text.delete(1.0, "end")
-    curryResult_text.insert(1.0, curryResult_var, 'justified')
+    curryResult_text.insert(1.0, *curryResult_var, 'justified')
 
     curryFile_text.configure(state="normal")
     curryFile_text.delete(1.0, "end")
@@ -312,7 +312,7 @@ def display_results():
         treeHashResult_var = reader3.readlines()
     treeHashResult_text.configure(state="normal")
     treeHashResult_text.delete(1.0, "end")
-    treeHashResult_text.insert(1.0, treeHashResult_var, 'justified')
+    treeHashResult_text.insert(1.0, *treeHashResult_var, 'justified')
 
     treeHashFile_text.configure(state="normal")
     treeHashFile_text.delete(1.0, "end")
@@ -322,7 +322,7 @@ def display_results():
         walletResult_var = reader4.readlines()
     walletResult_text.configure(state="normal")
     walletResult_text.delete(1.0, "end")
-    walletResult_text.insert(1.0, walletResult_var, 'justified')
+    walletResult_text.insert(1.0, *walletResult_var, 'justified')
 
     walletFile_text.configure(state="normal")
     walletFile_text.delete(1.0, "end")
