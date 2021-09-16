@@ -5,7 +5,7 @@ import os
 root = tk.Tk()
 root.geometry('700x700')
 root.resizable(True, True)
-root.title('Rhynosphere.v01 - ChiaLisp')
+root.title('Rhizosphere.v01 - ChiaLisp')
 
 
 #define variables for testing
@@ -98,7 +98,7 @@ bg_walletF_frame.place(relwidth=0.67, relheight=.03, relx=0.25, rely=.89)
 #define textboxes and labels
 header_text = tk.Text(bg_logo_frame, height=50, width=100, bd="0", fg="#1b4332", bg="#006400", font="Copperplate, 40", relief="sunken")
 header_text.place(relx=0.3, rely=0.1)
-header_text.insert(1.0, "Rhynosphere")
+header_text.insert(1.0, "Rhizosphere")
 
 psFile_text = tk.Text(bg_topps_frame, height=50, width=100, bd="0", fg="#1b4332", bg="gray", font="Arial, 12", relief="sunken")
 psFile_text.pack(fill='both', expand=True)

@@ -1,13 +1,13 @@
- <h1>Rhynosphere Project How-To</h1>
+ <h1>Rhizosphere Project How-To</h1>
 
  --note this project and its creator have no connections with the Chia Network team.
 
 
 <h2>Getting Started</h2>
 
-> - Download the Rhynosphere.vxx.py and create_hex.ps1 files.
+> - Download the Rhizosphere.vxx.py and create_hex.ps1 files.
 > - Add these files to any locatable directory.
-> - Run Rhynosphere.vxx.py
+> - Run Rhizosphere.vxx.py
 
 <h2>Using the GUI</h2>
 
@@ -46,7 +46,7 @@ This project takes a clsp file and processes it into all necessary files/data fo
 
 
  <h2>ChiaLisp Development Pre-requisites</h2>
- 
+
  Below is an overview of pre-requisites setup. Additional information can be found on the chialisp main website: https://chialisp.com/
 > -	Terminal
 > -	Editor
@@ -55,7 +55,7 @@ This project takes a clsp file and processes it into all necessary files/data fo
 
 
  <h2>Example Setup (windows)</h2>
- 
+
 > -	PowerShell https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1
 > -	Nano https://atom.io/
 > -	Python https://www.python.org/downloads/
@@ -64,30 +64,30 @@ This project takes a clsp file and processes it into all necessary files/data fo
 
      C:\Users\demo\Desktop>	mkdir TestProject
      # (creates directory named "TestProject")
-     
+
      C:\Users\demo\Desktop>	cd .\TestProject\
-     # (navigates to newly created directory) 
-     
+     # (navigates to newly created directory)
+
      C:\Users\demo\Desktop\TestProject>	py -m venv venv
      # (creates virtual environment, this also creates the "venv" directory needed for the project)
-     
+
      C:\Users\demo\Desktop\TestProject>	.\venv\Scripts\activate
      # (activates the virtual environment)
-     
+
      C:\Users\demo\Desktop\TestProject>	pip install chia-dev-tools
      # (installs the required chia development tools/commands)
-     
+
      C:\Users\demo\Desktop\TestProject>  cdv test --init
      # (creates basic clsp tests within project folder)
 
  <h2>Verify Installation via CLI:</h2>(must enter commands from python virtual environment in project folder)
-     
+
      C:\Users\demo\Desktop\TestProject>  chia --help
      #  (validates chia installation, identical to chia full node help)
-     
+
      C:\Users\demo\Desktop\TestProject>  brun --help
      #  (validates clvm tools are installed)
-     
+
      C:\Users\demo\Desktop\TestProject>  cdv --help
      #  (validates development tools are installed)
 
