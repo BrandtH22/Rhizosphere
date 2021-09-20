@@ -9,8 +9,10 @@ $fileName = Split-Path -leaf $filePath ;
 $hexPath = "$filePath.hex" ;
 $curry = "" ;
 $hex = "" ;
-Write-Host "Path: $path" ;
-Write-Host "Hex: $hexPath";
+Write-Host "*********************Processing Has Begun*********************"
+Write-Host "CLSP File: $path" ;
+Write-Host "Hex File: $filePath";
+Write-Host "envPath: $envPath";
 
 Remove-Item "$hexPath.backup" ;
 Copy-Item $hexPath -Destination "$hexPath.backup" ;
@@ -22,18 +24,15 @@ cd $path ;
 $hex = cdv clsp build $fileName ;
 
 $curry = cdv clsp curry $fileName $inputa $inputb ;
-Remove-Item "$filePath.curry.txt" ;
-New-Item "$filePath.curry.txt" ;
-Set-Content "$filePath.curry.txt" $curry ;
 
 $treehash = cdv clsp curry $fileName $inputa $inputb --treehash;
-Remove-Item "$filePath.treehash.txt" ;
-New-Item "$filePath.treehash.txt" ;
-Set-Content "$filePath.treehash.txt" $treehash ;
 
 $encode = cdv encode $treehash --prefix $prefix ;
-Remove-Item "$filePath.wallet.txt" ;
-New-Item "$filePath.wallet.txt" ;
-Set-Content "$filePath.wallet.txt" $encode ;
+
+Remove-Item "$filePath.results.txt" ;
+New-Item "$filePath.results.txt" ;
+$hexRes = Get-Content -Path "$fileName.hex" ;
+$results = @($hexRes, $curry, $treehash, $encode) ;
+Set-Content "$filePath.results.txt" $results ;
 
 Sleep 1

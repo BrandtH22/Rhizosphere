@@ -1,3 +1,5 @@
+NOTE--Variables have not been updated for v02alpha but will be updated for v02beta release (expected 9/30)
+
 bg_main_frame: defines background color and sizing
 bg_top_frame: defines background color and position of top user entry elements
 bg_topps_frame: defines bckground and position of powershell file output

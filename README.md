@@ -1,19 +1,25 @@
  <h1>Rhizosphere Project How-To</h1>
 
  --note this project and its creator have no connections with the Chia Network team.
+ --note this is an ALPHA version 2 of the IDE and HAS NOT BEEN THOROUGHLY TESTED, therefore we cannot guarantee the validity of any results at this time
 
 
 <h2>Getting Started</h2>
 
 > - Download the Rhizosphere.vxx.py and create_hex.ps1 files.
-> - Add these files to any locatable directory.
+> - Add these files to any locale directory.
 > - Run Rhizosphere.vxx.py
 
 <h2>Using the GUI</h2>
 
-> - Select the previously downloaded powershell file, the ChiaLisp file to be processed, appropriate prefix, and desired arguments.
-> - Click the begin button
-> - Wait for the results to appear
+> - Use the File menu (top left) to set default files and open/save CLSP filetypes
+> - The default PS File is the create_hex.ps1 file downloaded with this project
+> - The default virtual environment is the venv folder directory, review pre-requisites at the bottom of this document for more information
+> - Use the 'Develop' tab for CLSP syntax highlighting while creating or editing a CLSP file
+> - Use the 'Serialize' tab for processing CLSP files into their respective hex, curried, treehash, and wallet results
+> - Click the begin button to initiate processing (note there is no processing indicator at this time other than the underlying CLI)
+> - Wait for the results to appear (takes less than 30 seconds)
+> - The 'Deploy' is under development and will be released in v3 of the IDE
 
  (NOTE - processing will take less than 1 minute but during this time it may appear as though the GUI is frozen, it is not just please be patient. Future updates will include a processing identifier, for the time being monitor the supporting CLI for status. Also note that the created hex and txt files will overwrite any files with the same names.)
 
@@ -35,19 +41,18 @@
 
 This project takes a clsp file and processes it into all necessary files/data for use on the blockchain. Items that do not have their own file types are stored in .txt files. All files will be created in the ChiaLisp files directory and will overwrite any identically named documents. Below are all current outputs:
 
+> - CLSP file
 > - Hex result
-> - Hex file path
 > - Curry result
-> - Curry file path
 > - TreeHash result
-> - TreeHash file path
 > - Wallet result
-> - Wallet file path
+> - Results file path
 
 
  <h2>ChiaLisp Development Pre-requisites</h2>
 
  Below is an overview of pre-requisites setup. Additional information can be found on the chialisp main website: https://chialisp.com/
+
 > -	Terminal
 > -	Editor
 > -	Python
@@ -97,6 +102,6 @@ This project takes a clsp file and processes it into all necessary files/data fo
      #  (creates basic tests within project folder)
 
 
-Donations are always appreicated!:
+Donations are always appreciated!:
 
 xch1sg7g930mh676jfl09r4d4622z6wlwyv3u0ezcsxmn8rva9wqx8mqtgc2sf
