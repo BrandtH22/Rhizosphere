@@ -1,69 +1,76 @@
-NOTE--Variables have not been updated for v02alpha but will be updated for v02beta release (expected 9/30)
 
+tab_master: notebook used to generate tabs within tkinter
+tab1: text editor (develop) tab
+tab2: serialize tab
+tab3: deploy tab
+gpath: used for file saving and opening path variable
+psFile_path: variable containing powershell file path
+envFile_path: variable containing virtual environment path
+clspFile_path: variable containing the chialisp file path
+defaultsFile_path: variable containing the defaults file path
+opcodes: array containing OpCodes - currently used for testing argument population as array
+defaultsPath_var: array containing defaults in order (psFile_path, envFile_path, clspFile_path)
+hexResult_var: variable to store hex result
+curryResult_var: variable to store curry result
+treeHashResult_var: variable to store treehash result
+walletResult_var: variable to store encoded wallet result
+resultsFile_var: variable to store results file path
+args_array: Will replace constant arg variables, currently being tested
+arg1_var: variable to store argument 1
+arg2_var: variable to store argument 2
+prefix_var: variable used to store prefix selection. Prefix defaults to txch
 bg_main_frame: defines background color and sizing
 bg_top_frame: defines background color and position of top user entry elements
-bg_topps_frame: defines bckground and position of powershell file output
-bg_topenv_frame: defines bckground and position of virtual environment output
+bg_topclspLabel_frame: defines bckground and position of chialisp file label
 bg_topclsp_frame: defines bckground and position of chialisp file output
 bg_topr_frame: defines background color and position of top right user entry elements
 bg_mid_frame: defines background color and positioning for central elements (begin button)
 bg_bot_frame: defines background and positioning for bottom elements (results)
 bg_hexR_frame: defines background and positioning for hex result output
-bg_hexF_frame: defines background and positioning for hex file output
 bg_curryR_frame: defines background and positioning for curry result output
-bg_curryF_frame: defines background and positioning for curry file output
 bg_treeHashR_frame: defines background and positioning for treeHash result output
-bg_treeHashF_frame: defines background and positioning for treeHash file output
 bg_walletR_frame: defines background and positioning for wallet result output
-bg_walletF_frame: defines background and positioning for wallet file output
-
-header_text: controls header/logo text and positioning
-psFile_btn: button for powershell file entry
-psFile_text: text output of selected powershell file
-psFile_path: variable containing powershell file path
-envFile_btn: button for virtual environment entry
-envFile_text: text output of selected virtual environment
-envFile_path: variable containing virtual environment path
-clspFile_btn: button for chialisp file entry
+bg_resultsF_frame: defines background and positioning for result file output
+bg_resultsLabel_frame: defines background and positioning for result file label
+bg_deploy_frame: defines background and positioning for deploy tab items (coming soon)
+comingSoon_text: text to indicate that deploy tab is coming soon
+clspFile_label: label for working clsp file on tab 2
 clspFile_text: text output of selected chialisp file
-clspFile_path: variable containing the chialisp file path
-hexResult_label: label for hex result output
 hexResult_text: text output for hex result
-hexResult_var: variable to store hex result
-hexFile_label: label for hex file output (hex is stored in a txt file)
-hexFile_text: text output for hex file
-hexFile_var: variable to store hex file
-curryResult_label: label for the curry result output
 curryResult_text: text output for curry result
-curryResult_var: variable to store curry result
-curryFile_label: label for the curry file output (curry is stored in a txt file)
-curryFile_text: text output for curry file
-curryFile_var: variable to store curry file
-treeHashResult_label: label for the tree hash result output
 treeHashResult_text: text output for treehash result
-treeHashResult_var: variable to store treehash result
-treeHashFile_label: label for the tree hash file output (tree hash is stored in a txt file)
-treeHashFile_text: text output for treehash file
-treeHashFile_var: variable to store treehash file
-walletResult_label: label for the encoded wallet result output
 walletResult_text: text output for encoded wallet result
-walletResult_var: variable to store encoded wallet result
-walletFile_label: label for the wallet file output (wallet is stored in a txt file)
-walletFile_text: text output for encoded wallet file
-walletFile_var: variable to store encoded wallet file
+resultFile_label: label for the results file
+resultFile_text: text output for the results file output
 args_label: label for identifying entry of Arguments
+args_arraytext: text input for argument 1
 arg1_label: label for first argument entry
-arg1_text: text input for argument 1
-arg1_var: variable to store argument 1
+args2_arraytext: text input for argument 2
 arg2 label: label for second argument entry
-arg2_text: text input for argument 2
-arg2_var: variable to store argument 2
 prefix_label: label for prefix selection
+bg_defaults_frame: defines background and positioning for defaults window
+bg_topps_frame: defines background and positioning for ps file text
+bg_topenv_frame: defines background and positioning for env file text
+psFile_text: text output for the ps file output
+envFile_text: text output for the env file output
+psFile_btn: button for selecting the ps file on the defaults window
+envFile_btn: button for selecting the env folder on the defaults window
+defClose_btn: button for saving and closing the defaults window
+arg1_text: text field for arg1 input instructions (text disappears being replaced with entry)
+arg2_text: text field for arg2 input instructions (text disappears being replaced with entry)
+textEditor: first tab text editor window
+menuBar: Top menu for file opening/saving and defaults selection
+fileBar: drop down list from menuBar
 prefix_txch_btn: button for txch prefix selection
 prefix_xch_btn: button for xch prefix selection
+hexResult_btn: button for copying the hexResult_text
+curryResult_btn: button for copying the curryResult_text
+treeHashResult_btn: button for copying the treeHashResult_text
+walletResult_btn: button for copying the walletResult_text
+begin_btntext: text variable for begin_btn
+begin_btn: button for initiating the serialization process on tab2
 clicked1: variable used to remove entry information from arg1 entry field
 clicked2: variable used to remove entry information from arg2 entry field
-prefix_var: variable used to store prefix selection. Prefix defaults to txch
 
 PS variables
 $envPath: envFile_path imported from Python

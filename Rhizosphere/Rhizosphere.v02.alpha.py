@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog, Text
 from tkinter.filedialog import askopenfilename, asksaveasfilename
+from threading import *
 import TKlighter
 import os
 import subprocess
@@ -11,6 +12,7 @@ import subprocess
 root = Tk()
 root.geometry('800x750')
 root.resizable(True, True)
+root.iconbitmap("Rhizosphere.logo.ico")
 root.title('Rhizosphere IDE V02 - ChiaLisp')
 
 #define tabs
@@ -25,7 +27,7 @@ tab_master.add(tab1, text="Develop")
 tab_master.add(tab2, text="Serialize")
 tab_master.add(tab3, text="Deploy")
 
-tab_master.place(relwidth=1, relheight=.89, relx=0.0, rely=.11)
+tab_master.place(relwidth=1, relheight=1, relx=0.0, rely=0.0)
 
 #define variables
 gpath = ''
@@ -33,6 +35,23 @@ psFile_path = "C:/example/path/file.ps1"
 envFile_path = "C:/example/path/venv"
 clspFile_path = "C:/example/path/file.clsp"
 defaultsFile_path = "./defaults.txt"
+opcodes = ['ASSERT_MY_AMOUNT',
+    'AGG_SIG_UNSAFE',
+    'AGG_SIG_ME',
+    'CREATE_COIN',
+    'ASSERT_FEE',
+    'CREATE_COIN_ANNOUNCEMENT',
+    'ASSERT_COIN_ANNOUNCEMENT',
+    'CREATE_PUZZLE_ANNOUNCEMENT',
+    'ASSERT_PUZZLE_ANNOUNCEMENT',
+    'ASSERT_MY_COIN_ID',
+    'ASSERT_MY_PARENT_ID',
+    'ASSERT_MY_PUZZLEHASH',
+    'ASSERT_MY_AMOUNT',
+    'ASSERT_SECONDS_RELATIVE',
+    'ASSERT_SECONDS_ABSOLUTE',
+    'ASSERT_HEIGHT_RELATIVE',
+    'ASSERT_HEIGHT_ABSOLUTE']
 defaultsPath_var = [psFile_path, envFile_path, clspFile_path]
 
 
@@ -41,6 +60,7 @@ curryResult_var = "curry result will display here"
 treeHashResult_var = "treehash result will display here"
 walletResult_var = "wallet result will display here"
 resultsFile_var = "results file path will display here"
+args_array = []
 arg1_var = tk.StringVar()
 arg1_var = "enter arg as '-a xxx'"
 arg2_var = tk.StringVar()
@@ -62,9 +82,6 @@ if os.path.isfile('defaults.txt'):
     defaultsFile.close()
 
 #define serialize (tab2) frames
-bg_logo_frame = tk.Frame(root, bg="#006400")
-bg_logo_frame.place(relwidth=1, relheight=.1, relx=0.0, rely=.01)
-
 bg_main_frame = tk.Frame(tab2, bg='#2d6a4f')
 bg_main_frame.place(relwidth=1, relheight=1, relx=0, rely=0)
 
@@ -108,8 +125,7 @@ bg_deploy_frame = tk.Frame(tab3, bg="gray")
 bg_deploy_frame.place(relwidth=1, relheight=1, relx=0, rely=0)
 
 #define serialize (tab2) textboxes and labels
-header_text = tk.Label(bg_logo_frame, text="Rhizosphere", bd="0", fg="#1b4332", bg="#006400", font="Copperplate, 40", relief="sunken")
-header_text.place(relx=0.3, rely=0.1)
+
 
 comingSoon_text = tk.Label(bg_deploy_frame, text="Coming Soon", bd="0", fg="black", bg="#006400", font="Copperplate, 40", relief="sunken")
 comingSoon_text.place(relx=.28, rely=.2)
@@ -122,32 +138,20 @@ clspFile_text.pack(fill='both', expand=True)
 clspFile_text.tag_config('justified', justify="right", wrap="none", underline=True)
 clspFile_text.insert(1.0, clspFile_path, 'justified')
 
-hexResult_label = tk.Label(bg_bot_frame, text="Hex Result:", bg="#74c69d", justify="right", padx=35, pady=15, relief="sunken")
-hexResult_label.place(relx=0.01, rely=0.04)
-
 hexResult_text = tk.Text(bg_hexR_frame, height=50, width=100, bd="0", fg="#1b4332", bg="gray", font="Arial, 12", relief="sunken")
 hexResult_text.pack(fill='both', expand=True)
 hexResult_text.tag_config('justified', justify="right")
 hexResult_text.insert(1.0, hexResult_var, 'justified')
-
-curryResult_label = tk.Label(bg_bot_frame, text="Curry Result:", bg="#74c69d", justify="right", padx=30, pady=15, relief="sunken")
-curryResult_label.place(relx=0.01, rely=0.28)
 
 curryResult_text = tk.Text(bg_curryR_frame, height=50, width=100, bd="0", fg="#1b4332", bg="gray", font="Arial, 12", relief="sunken")
 curryResult_text.pack(fill='both', expand=True)
 curryResult_text.tag_config('justified', justify="right")
 curryResult_text.insert(1.0, curryResult_var, 'justified')
 
-treeHashResult_label = tk.Label(bg_bot_frame, text="Tree Hash Result:", bg="#74c69d", justify="right", padx=18, pady=15, relief="sunken")
-treeHashResult_label.place(relx=0.01, rely=0.52)
-
 treeHashResult_text = tk.Text(bg_treeHashR_frame, height=50, width=100, bd="0", fg="#1b4332", bg="gray", font="Arial, 12", relief="sunken")
 treeHashResult_text.pack(fill='both', expand=True)
 treeHashResult_text.tag_config('justified', justify="right")
 treeHashResult_text.insert(1.0, treeHashResult_var, 'justified')
-
-walletResult_label = tk.Label(bg_bot_frame, text="Encoded Wallet Result:", bg="#74c69d", justify="right", padx=3, pady=15, relief="sunken")
-walletResult_label.place(relx=0.01, rely=0.76)
 
 walletResult_text = tk.Text(bg_walletR_frame, height=50, width=100, bd="0", fg="#1b4332", bg="gray", font="Arial, 12", relief="sunken")
 walletResult_text.pack(fill='both', expand=True)
@@ -162,14 +166,19 @@ resultsFile_text.pack(fill='both', expand=True)
 resultsFile_text.tag_config('justified', justify="right", wrap="none", underline=True)
 resultsFile_text.insert(1.0, resultsFile_var, 'justified')
 
+
 args_label = tk.Label(bg_topr_frame, text="Arguments to Curry", bg="gray", justify="right", padx=3, pady=3, relief="flat")
 args_label.place(relx=0.24, rely=0.1)
 
-arg1_label = tk.Label(bg_topr_frame, text="arg1: ", bg="gray", justify="right", padx=3, pady=3, relief="flat")
-arg1_label.place(relx=0.1, rely=0.4)
+args_arraytext = tk.StringVar()
+arg1_label = tk.Label(bg_topr_frame, textvariable=args_arraytext, bg="gray", justify="right", padx=3, pady=3, relief="flat")
+args_arraytext.set("Save to Update Arg")
+arg1_label.place(relx=0.05, rely=0.4)
 
-arg2_label = tk.Label(bg_topr_frame, text="arg2: ", bg="gray", justify="right", padx=3, pady=3, relief="flat")
-arg2_label.place(relx=0.1, rely=0.7)
+args2_arraytext = tk.StringVar()
+arg2_label = tk.Label(bg_topr_frame, textvariable=args2_arraytext, bg="gray", justify="right", padx=3, pady=3, relief="flat")
+args2_arraytext.set("Save to Update Arg")
+arg2_label.place(relx=0.05, rely=0.7)
 
 prefix_label = tk.Label(bg_topr_frame, text="Wallet Prefix", bg="gray", justify="right", padx=3, pady=3, relief="flat")
 prefix_label.place(relx=0.75, rely=0.1)
@@ -236,6 +245,7 @@ def openMyFile():
         clspFile_text.configure(state="normal")
         clspFile_text.delete(1.0, "end")
         clspFile_text.insert(1.0, clspFile_path, 'justified')
+        count_capital_words()
 
 def saveMyFileAs():
     global gpath
@@ -255,26 +265,51 @@ def saveMyFileAs():
         clspFile_text.configure(state="normal")
         clspFile_text.delete(1.0, "end")
         clspFile_text.insert(1.0, clspFile_path, 'justified')
+        count_capital_words()
+
+def count_capital_words():
+    global opcodes
+    global clspFile_path
+    count = 0
+    cap = []
+    args_array = []
+    with open(clspFile_path, 'r') as fp:
+        for line in fp:
+            for word in filter(None, line.split()):
+                if word[0].isupper():
+                    count += 1
+                    cap.append(word)
+    ch = [')', '(', '[', ']']
+    for i in ch:
+        cap = [elem.replace(i, '') for elem in cap]
+    for i in opcodes:
+        while i in cap:
+            cap.remove(i)
+    for i in cap:
+        if i not in args_array:
+            args_array.append(i)
+    args_arraytext.set(args_array[1])
+    args2_arraytext.set(args_array[2])
 
 #define clsp highlighting for tab1
 
 def light(event):
-    hlight_1 = ['AGG_SIG_UNSAFE',
-        'AGG_SIG_ME',
-        'CREATE_COIN',
-        'ASSERT_FEE',
-        'CREATE_COIN_ANNOUNCEMENT',
-        'ASSERT_COIN_ANNOUNCEMENT',
-        'CREATE_PUZZLE_ANNOUNCEMENT',
-        'ASSERT_PUZZLE_ANNOUNCEMENT',
-        'ASSERT_MY_COIN_ID',
-        'ASSERT_MY_PARENT_ID',
-        'ASSERT_MY_PUZZLE_HASH',
-        'ASSERT_MY_AMOUNT',
-        'ASSERT_SECONDS_RELATIVE',
-        'ASSERT_SECONDS_ABSOLUTE',
-        'ASSERT_HEIGHT_RELATIVE',
-        'ASSERT_HEIGHT_ABSOLUTE']
+    hlight_1 = ['AGG_SIG_UNSAFE', '49',
+        'AGG_SIG_ME', '50',
+        'CREATE_COIN', '51',
+        'ASSERT_FEE', '52',
+        'CREATE_COIN_ANNOUNCEMENT', '60',
+        'ASSERT_COIN_ANNOUNCEMENT', '61',
+        'CREATE_PUZZLE_ANNOUNCEMENT', '62',
+        'ASSERT_PUZZLE_ANNOUNCEMENT', '63',
+        'ASSERT_MY_COIN_ID', '70',
+        'ASSERT_MY_PARENT_ID', '71',
+        'ASSERT_MY_PUZZLEHASH', '72',
+        'ASSERT_MY_AMOUNT', '73',
+        'ASSERT_SECONDS_RELATIVE', '80',
+        'ASSERT_SECONDS_ABSOLUTE', '81',
+        'ASSERT_HEIGHT_RELATIVE', '82',
+        'ASSERT_HEIGHT_ABSOLUTE', '83']
     hlight_2 = ['run',
                 'mod',
                 'main',
@@ -407,6 +442,10 @@ def create_hex():
 def display_results():
     global arg1_var
     global arg2_var
+    global hexResult_var
+    global curryResult_var
+    global treeHashResult_var
+    global walletResult_var
     print("arg1 = ", arg1_var)
     print("arg2 = ", arg2_var)
     print("Prefix = ", prefix_var)
@@ -444,10 +483,25 @@ def display_results():
     resultsFile_text.delete(1.0, "end")
     resultsFile_text.insert(1.0, resultsFile_var, 'justified')
 
+    global begin_btntext
+    begin_btntext.set("Click to Begin")
+
 
 def submit_click():
+    t1=Thread(target=begin_process)
+    t1.start()
+    t2=Thread(target=processing)
+    t2.start()
+
+def processing():
+    global begin_btntext
+    begin_btntext.set("Processing")
+
+
+def begin_process():
     global arg1_var
     global arg2_var
+
 
     if arg1_text.get() in {"", " ", "enter arg as '-a xxx'"}:
         if arg2_text.get() in {"", " ", "enter arg as '-a xxx'"}:
@@ -471,6 +525,37 @@ def submit_click():
         create_hex()
         display_results()
 
+def hexCopy_click():
+    global hexResult_var
+    clip = Tk()
+    clip.withdraw()
+    clip.clipboard_clear()
+    clip.clipboard_append(hexResult_var)
+    clip.destroy()
+
+def curryCopy_click():
+    global curryResult_var
+    clip = Tk()
+    clip.withdraw()
+    clip.clipboard_clear()
+    clip.clipboard_append(curryResult_var)
+    clip.destroy()
+
+def treeHashCopy_click():
+    global treeHashResult_var
+    clip = Tk()
+    clip.withdraw()
+    clip.clipboard_clear()
+    clip.clipboard_append(treeHashResult_var)
+    clip.destroy()
+
+def walletCopy_click():
+    global walletResult_var
+    clip = Tk()
+    clip.withdraw()
+    clip.clipboard_clear()
+    clip.clipboard_append(walletResult_var)
+    clip.destroy()
 
 
 
@@ -513,6 +598,18 @@ prefix_txch_btn.place(relx=0.8, rely=0.38)
 
 prefix_xch_btn = tk.Button(bg_topr_frame, text="xch ", command=xch_toggle, bg="white", justify="right", padx=5, pady=3, relief="raised")
 prefix_xch_btn.place(relx=0.8, rely=0.68)
+
+hexResult_btn = tk.Button(bg_bot_frame, text="Hex Result:", command=hexCopy_click, bg="#74c69d", justify="right", padx=35, pady=15, relief="sunken")
+hexResult_btn.place(relx=0.01, rely=0.04)
+
+curryResult_btn = tk.Button(bg_bot_frame, text="Curry Result:", command=curryCopy_click, bg="#74c69d", justify="right", padx=30, pady=15, relief="sunken")
+curryResult_btn.place(relx=0.01, rely=0.28)
+
+treeHashResult_btn = tk.Button(bg_bot_frame, text="Tree Hash Result:", command=treeHashCopy_click, bg="#74c69d", justify="right", padx=18, pady=15, relief="sunken")
+treeHashResult_btn.place(relx=0.01, rely=0.52)
+
+walletResult_btn = tk.Button(bg_bot_frame, text="Encoded Wallet Result:", command=walletCopy_click, bg="#74c69d", justify="right", padx=3, pady=15, relief="sunken")
+walletResult_btn.place(relx=0.01, rely=0.76)
 
 begin_btntext = tk.StringVar()
 begin_btn = tk.Button(bg_mid_frame, textvariable=begin_btntext, command=submit_click, font="Perpetua, 12", width=16, height=2, relief="raised", bg="white")
