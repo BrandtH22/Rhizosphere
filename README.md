@@ -1,3 +1,5 @@
+![Rhizosphere logo](https://user-images.githubusercontent.com/48610606/135378714-0037a053-af4f-48ce-ad3b-50c7f8ca2cc1.png)
+
  <h1>Rhizosphere Project How-To</h1>
 
  --note this project and its creator have no connections with the Chia Network team.
@@ -105,4 +107,4 @@ This project takes a clsp file (which can be viewed and edited in tab1) and proc
 
 Donations are always appreciated!:
 
-xch1sg7g930mh676jfl09r4d4622z6wlwyv3u0ezcsxmn8rva9wqx8mqtgc2sf
+xch1we8herlmv4rapnkfkk89n60l0w98tt73u08mg7j23z0z8t0dy6tsn6k35w
