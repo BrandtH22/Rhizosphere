@@ -1,3 +1,5 @@
+![Rhizosphere logo](https://user-images.githubusercontent.com/48610606/135378714-0037a053-af4f-48ce-ad3b-50c7f8ca2cc1.png)
+
  <h1>Rhizosphere Project How-To</h1>
 
  --note this project and its creator have no connections with the Chia Network team.
