@@ -17,3 +17,9 @@ activate
 # Logs
 *.log
 *.out
+
+# clsp_files
+*.clsp
+*.clsp.hex
+*.clsp.hex.bkp
+*.clsp.results.txt

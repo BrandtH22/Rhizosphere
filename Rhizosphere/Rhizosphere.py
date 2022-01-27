@@ -7,6 +7,7 @@ from threading import *
 import TKlighter
 import os
 import subprocess
+import shutil
 
 
 root = Tk()
@@ -31,10 +32,15 @@ tab_master.place(relwidth=1, relheight=1, relx=0.0, rely=0.0)
 
 #define variables
 gpath = ''
-psFile_path = "C:/example/path/file.ps1"
-envFile_path = "C:/example/path/venv"
+psFile_path = "./create_hex.ps1"
+envFile_path = ". ./venv"
 clspFile_path = "C:/example/path/file.clsp"
 defaultsFile_path = "./defaults.txt"
+curry = ""
+hex = ""
+treehash = ""
+encode = ""
+results = ['']
 opcodes = ['ASSERT_MY_AMOUNT',
     'AGG_SIG_UNSAFE',
     'AGG_SIG_ME',
@@ -76,9 +82,7 @@ if os.path.isfile('defaults.txt'):
     envFile_path = defaults_array[1]
     clspFile_path = defaults_array[2]
     print("*********************Thank you for using Rhizosphere*********************")
-    print("Default ps File Path: " + psFile_path.strip())
-    print("Default env Folder Path: " + envFile_path.strip())
-    print("Default clsp File Path: " + clspFile_path.strip())
+    print("Working clsp File Path: " + clspFile_path.strip())
     defaultsFile.close()
 
 #define serialize (tab2) frames
@@ -187,48 +191,6 @@ prefix_label.place(relx=0.75, rely=0.1)
 
 #define menu bar functions
 
-def setDefaults():
-    global psFile_text
-    global envFile_text
-    global psFile_path
-    global envFile_path
-    global defaults_array
-    defaults_w = tk.Toplevel(root)
-    defaults_w.geometry('700x200')
-    defaults_w.grab_set()
-    defaults_w.focus_force()
-    def defClose_toggle():
-        defaults_w.destroy()
-    bg_defaults_frame = tk.Frame(defaults_w, bg="gray")
-    bg_defaults_frame.place(relwidth=1, relheight=1, relx=0, rely=0)
-
-    bg_topps_frame = tk.Frame(bg_defaults_frame, bg="gray")
-    bg_topps_frame.place(relwidth=0.75, relheight=.12, relx=0.2, rely=.12)
-
-    bg_topenv_frame = tk.Frame(bg_defaults_frame, bg="gray")
-    bg_topenv_frame.place(relwidth=0.75, relheight=.12, relx=0.2, rely=.4)
-
-    psFile_text = tk.Text(bg_topps_frame, height=50, width=100, bd="0", fg="#1b4332", bg="gray", font="Arial, 12", relief="sunken")
-    psFile_text.pack(fill='both', expand=True)
-    psFile_text.tag_config('justified', justify="right", wrap="none", underline=True)
-    psFile_text.insert(1.0, psFile_path, 'justified')
-
-    envFile_text = tk.Text(bg_topenv_frame, height=50, width=100, bd="0", fg="#1b4332", bg="gray", font="Arial, 12", relief="sunken")
-    envFile_text.pack(fill='both', expand=True)
-    envFile_text.tag_config('justified', justify="right", wrap="none", underline=True)
-    envFile_text.insert(1.0, envFile_path, 'justified')
-
-    psFile_btn = tk.Button(defaults_w, text="PowerShell File", command=psFile_toggle, width=16, relief="raised", bg="white")
-    psFile_btn.place(relx=0.01, rely=0.11)
-
-    envFile_btn = tk.Button(defaults_w, text="Virtual Environment", command=envFile_toggle, width=16, relief="raised", bg="white")
-    envFile_btn.place(relx=0.01, rely=0.4)
-
-    defClose_btn = tk.Button(defaults_w, text="Save Defaults and Close", command=defClose_toggle, width=22, relief="raised", bg="white")
-    defClose_btn.place(relx=0.45, rely=0.8)
-
-
-
 def openMyFile():
     path = askopenfilename(filetypes=[('ChiaLisp','*.clsp'), ('CLVM','*.clvm')])
     with open(path, 'r') as file:
@@ -241,7 +203,7 @@ def openMyFile():
         global clspFile_text
         global defaults_array
         clspFile_path = path
-        defaults_array[2] = clspFile_path
+        defaults_array[0] = clspFile_path
         clspFile_text.configure(state="normal")
         clspFile_text.delete(1.0, "end")
         clspFile_text.insert(1.0, clspFile_path, 'justified')
@@ -261,7 +223,7 @@ def saveMyFileAs():
     with open(path, 'w') as file:
         code = textEditor.get('1.0', END)
         file.write(code)
-        defaults_array[2] = clspFile_path
+        defaults_array[0] = clspFile_path
         clspFile_text.configure(state="normal")
         clspFile_text.delete(1.0, "end")
         clspFile_text.insert(1.0, clspFile_path, 'justified')
@@ -399,44 +361,40 @@ def xch_toggle():
         print("xch click - change to sunken")
         print("prefix: ", prefix_var)
 
-def psFile_toggle():
-    global psFile_path
-    global psFile_text
-    global defaults_array
-    psFile_path = filedialog.askopenfilename(initialdir="/", title="Select create_hex.ps1 file",
-                                            filetypes= (("Powershell", "*.ps1"), ("all files", "*.*")))
-    psFile_text.configure(state="normal")
-    psFile_text.delete(1.0, "end")
-    psFile_text.insert(1.0, psFile_path, 'justified')
-    defaults_array[0] = psFile_path + "\n"
-
-def envFile_toggle():
-    global envFile_path
-    global envFile_text
-    global defaults_array
-    envFile_path = filedialog.askdirectory(initialdir="/", title="Select Virtual Environment Directory")
-    envFile_text.configure(state="normal")
-    envFile_text.delete(1.0, "end")
-    envFile_text.insert(1.0, envFile_path, 'justified')
-    defaults_array[1] = envFile_path + "\n"
-
 def create_hex():
     import subprocess
     global psFile_path
     global envFile_path
     global clspFile_path
+    global curry
+    global hex
+    global treehash
+    global encode
+    global results
     psFile_path = psFile_path.strip()
     envFile_path = envFile_path.strip()
     clspFile_path = clspFile_path.strip()
-    completed = subprocess.run(["powershell.exe",
-                "-File",
-                psFile_path,
-                envFile_path,
-                clspFile_path,
-                arg1_var,
-                arg2_var,
-                prefix_var])
-    return completed
+    hexFile_path = clspFile_path + ".hex"
+    hexbkpFile_path = hexFile_path + ".bkp"
+
+
+    print("*********************Processing Has Begun*********************")
+
+    if os.path.exists(hexFile_path):
+        if os.path.exists(hexbkpFile_path):
+            os.remove(hexbkpFile_path)
+        else:
+            print("There is no backup hex file, one will be created during this process")
+        shutil.copyfile(hexFile_path, hexbkpFile_path)
+        os.remove(hexFile_path)
+    else:
+        print("There is no hex file, one will be created during this process")
+
+    hex = cdv clsp build clspFile_path
+    curry = cdv clsp curry clspFile_path arg1_var arg2_var
+    treehash = cdv clsp curry clspFile_path arg1_var arg2_var --treehash
+    encode = cdv encode treehash --prefix prefix_var
+    results = [hex, curry, treehash, encode]
 
 
 def display_results():
@@ -449,9 +407,7 @@ def display_results():
     print("arg1 = ", arg1_var)
     print("arg2 = ", arg2_var)
     print("Prefix = ", prefix_var)
-    print("PS File Path: ", psFile_path)
-    print("Env File Path: ", envFile_path)
-    print("CLSP File Path: ", clspFile_path)
+    print("Working CLSP File Path: ", clspFile_path)
     print("*********************Processing Complete*********************")
 
     resultsFile_var = clspFile_path + ".results.txt"
@@ -571,7 +527,6 @@ textEditor.bind('<Key>', light)
 menuBar = Menu(tab1)
 
 fileBar = Menu(menuBar, tearoff=0)
-fileBar.add_command(label='Set Defaults', command = setDefaults)
 fileBar.add_command(label='Open CLSP/CLVM', command = openMyFile)
 fileBar.add_command(label='Save CLSP/CLVM', command = saveMyFileAs)
 fileBar.add_command(label='SaveAs CLSP/CLVM', command = saveMyFileAs)

@@ -24,9 +24,10 @@ if ([version]$pythonVersion -lt [version]"3.7.0")
 }
 Write-Output "Python version is:" $pythonVersion
 
-py -m venv venv
+python3 -m venv venv
 
 venv\scripts\pip install TKlighter
+venv\scripts\pip install chia-dev-tools
 
 git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules
 cd chia-blockchain
