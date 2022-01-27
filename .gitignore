@@ -25,4 +25,4 @@ activate
 *.clsp.results.txt
 
 # default file
-*defaults.txt
+defaults.txt
