@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# pyenv
+.python-version
+.eggs
+.venv
+venv
+activate
+
+# Editors
+.vscode
+.idea
+
+# Logs
+*.log
+*.out
