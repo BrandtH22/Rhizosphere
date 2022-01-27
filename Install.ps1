@@ -28,6 +28,10 @@ py -m venv venv
 
 venv\scripts\pip install TKlighter
 
+git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules
+cd chia-blockchain
+./Install.ps1
+
 Write-Output ""
 Write-Output ""
 Write-Output "Rhizosphere has successfully installed"
